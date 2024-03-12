@@ -1,0 +1,73 @@
+C51 COMPILER V9.54   MOVE                                                                  03/12/2024 20:46:18 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MOVE
+OBJECT MODULE PLACED IN .\Objects\move.obj
+COMPILER INVOKED BY: D:\huang\Documents\keil\C51\BIN\C51.EXE move.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\move.lst) OBJECT(.\Objects\move.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "motor.h"
+   3          #include "move.h"
+   4          void move_go()                      //前进
+   5          {
+   6   1          car_left_motor_forward();      //左电机向前
+   7   1          car_right_motor_forward();     //右电机向前
+   8   1      }
+   9           
+  10           
+  11          void move_back()                      //前退
+  12          {
+  13   1          car_left_motor_back();      //左电机向后
+  14   1          car_right_motor_back();     //右电机向后
+  15   1      }
+  16           
+  17           
+  18           
+  19          void move_left()                      //左转
+  20          {
+  21   1          car_left_motor_stop();          //左电机停止
+  22   1          car_right_motor_forward();     //右电机向前
+  23   1      }
+  24           
+  25           
+  26          void move_right()                      //右转
+  27          {
+  28   1          car_left_motor_forward();      //左电机向前
+  29   1          car_right_motor_stop();     //右电机停止
+  30   1      }
+  31          void move_stop()
+  32          {
+  33   1          car_right_motor_stop();     //右电机停止
+  34   1          car_left_motor_stop();          //左电机停止
+  35   1      }
+  36          void move_back_left()                      //左转
+  37          {
+  38   1          car_left_motor_stop();          //左电机停止
+  39   1          car_right_motor_back();     //右电机向前
+  40   1      }
+  41          
+  42           
+  43          void move_back_right()                      //右转
+  44          {
+  45   1          car_left_motor_back();      //左电机向前
+  46   1          car_right_motor_stop();     //右电机停止
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   MOVE                                                                  03/12/2024 20:46:18 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

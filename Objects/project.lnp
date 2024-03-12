@@ -1,0 +1,11 @@
+".\Objects\main.obj",
+".\Objects\motor.obj",
+".\Objects\move.obj",
+".\Objects\timer_PWM.obj",
+".\Objects\UT.obj",
+".\Objects\bluetooth.obj",
+".\Objects\Delay.obj",
+".\Objects\Tracking.obj",
+".\Objects\Servo.obj" 
+TO ".\Objects\project" 
+PRINT(".\Listings\project.m51") RAMSIZE(256) 

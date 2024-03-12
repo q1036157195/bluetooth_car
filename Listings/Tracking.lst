@@ -1,0 +1,126 @@
+C51 COMPILER V9.54   TRACKING                                                              03/12/2024 20:46:08 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TRACKING
+OBJECT MODULE PLACED IN .\Objects\Tracking.obj
+COMPILER INVOKED BY: D:\huang\Documents\keil\C51\BIN\C51.EXE Tracking.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRIN
+                    -T(.\Listings\Tracking.lst) OBJECT(.\Objects\Tracking.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "motor.h"
+   3          #include "timer_PWM.h"
+   4          #include "Delay.h"
+   5          #include "Tracking.h"
+   6          #include "move.h"
+   7          
+   8          sbit OUT1 = P2^7;//×ó´óµ÷
+   9          sbit OUT2 = P2^6;//×óÎ¢µ÷
+  10          sbit OUT4 = P2^5;//ÓÒ´óµ÷
+  11          sbit OUT3 = P2^4;//ÓÒÎ¢µ÷
+  12          
+  13          
+  14          sbit IN1 = P1^0;//×óÂÖ
+  15          sbit IN2 = P1^1;//×óÂÖ
+  16          sbit IN3 = P1^2;//ÓÒÂÖ
+  17          sbit IN4 = P1^3;//ÓÒÂÖ
+  18          
+  19          
+  20          void Chack()
+  21          {
+  22   1              if(OUT1 == 1 && OUT2 == 1 && OUT3 == 1 && OUT4 == 1)//È«ºÚÏß£¨»ò¿ÕÖÐ£©Í£³µ
+  23   1              {
+  24   2                      speed_left = 0;
+  25   2                      speed_right = 0;
+  26   2                      move_stop();
+  27   2              }
+  28   1      
+  29   1              if(OUT1 == 0 && OUT2 == 0 && OUT3 == 1 && OUT4 == 0)//Æ«×ó£¬ÓÒÒÆ
+  30   1              {
+  31   2                      speed_left=30;
+  32   2                      speed_right =40;
+  33   2                      move_go();
+  34   2              }
+  35   1      
+  36   1              if(OUT1 == 0 && OUT2 == 1 && OUT3 == 0 && OUT4 == 0)//Æ«ÓÒ£¬×óÒÆ
+  37   1              {
+  38   2                 speed_left =40;
+  39   2                      speed_right =30;
+  40   2                      move_go();
+  41   2              }
+  42   1      
+  43   1              if(OUT1 == 1 && OUT2 == 1 && OUT3 == 0 && OUT4 == 0)//×ó´ó×ª
+  44   1              {
+  45   2                      move_stop();
+  46   2                      Delay(20);
+  47   2                  speed_left = 50;
+  48   2                      speed_right= 30;
+  49   2                      Delay(20);
+  50   2                      move_go();
+  51   2                      
+  52   2                      while(1)
+  53   2                      {
+  54   3                                      IN1 = 0;
+C51 COMPILER V9.54   TRACKING                                                              03/12/2024 20:46:08 PAGE 2   
+
+  55   3                                      IN2 = 1;
+  56   3                                      if(OUT3 == 1) 
+  57   3                              {
+  58   4                                      IN1 = 1;
+  59   4                                      IN2 = 0;
+  60   4                                      break;
+  61   4                              }
+  62   3                                      speed_left = 40;
+  63   3                                      speed_right = 40;
+  64   3                                      move_go();
+  65   3                                      
+  66   3                      }
+  67   2              }
+  68   1              if(OUT1 == 0 && OUT2 == 0 && OUT3 == 0 && OUT4 == 1)//ÓÒ´ó×ª
+  69   1              {
+  70   2                      move_stop();
+  71   2                      Delay(20);
+  72   2                      speed_left = 30;
+  73   2                      speed_right = 50;
+  74   2                      Delay(20);
+  75   2                      move_go();
+  76   2                      
+  77   2              while(1)
+  78   2                      {
+  79   3                              IN3 = 0;
+  80   3                              IN4 = 1;
+  81   3                                      if(OUT2 == 1) 
+  82   3                              {
+  83   4                                      IN3 = 1;
+  84   4                                      IN4 = 0;
+  85   4                              break;
+  86   4                              }
+  87   3                                      speed_left = 40;
+  88   3                                      speed_right = 40;
+  89   3                                      move_go();
+  90   3                                      
+  91   3                      }
+  92   2              }
+  93   1      
+  94   1              if(OUT1 == 1 && OUT2 == 0 && OUT3 == 0 && OUT4 == 1)
+  95   1              {
+  96   2                      speed_left = 40;
+  97   2                      speed_right = 40;
+  98   2                      move_go();
+  99   2              }
+ 100   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    252    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
